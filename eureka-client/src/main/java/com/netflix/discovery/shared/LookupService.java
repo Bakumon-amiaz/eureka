@@ -22,6 +22,9 @@ import com.netflix.appinfo.InstanceInfo;
 /**
  * Lookup service for finding active instances.
  *
+ * 用于获取活动实例的查找服务
+ *
+ *
  * @author Karthik Ranganathan, Greg Kim.
  * @param <T> for backward compatibility
 
@@ -29,6 +32,12 @@ import com.netflix.appinfo.InstanceInfo;
 public interface LookupService<T> {
 
     /**
+     * corresponding 相应的
+     * basically 主要的
+     *
+     *
+     * 返回相应的对象，该对象基本上是所有注册的<code>appName</code>的容器
+     *
      * Returns the corresponding {@link Application} object which is basically a
      * container of all registered <code>appName</code> {@link InstanceInfo}s.
      *

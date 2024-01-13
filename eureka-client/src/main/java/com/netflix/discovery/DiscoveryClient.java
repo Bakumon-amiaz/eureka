@@ -89,6 +89,9 @@ import com.netflix.servo.monitor.Monitors;
 import com.netflix.servo.monitor.Stopwatch;
 
 /**
+ * instrumental for  ...的工具
+ * interactions with 与...交互
+ *
  * The class that is instrumental for interactions with <tt>Eureka Server</tt>.
  *
  * <p>
