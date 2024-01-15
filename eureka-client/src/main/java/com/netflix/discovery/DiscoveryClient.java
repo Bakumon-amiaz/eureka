@@ -871,6 +871,7 @@ public class DiscoveryClient implements EurekaClient {
 
     /**
      * Register with the eureka service by making the appropriate REST call.
+     * 通过适当的REST调用注册到 eureka服务
      */
     boolean register() throws Throwable {
         logger.info(PREFIX + "{}: registering service...", appPathIdentifier);
@@ -889,6 +890,7 @@ public class DiscoveryClient implements EurekaClient {
 
     /**
      * Renew with the eureka service by making the appropriate REST call
+     * 通过进行适当的REST调用来续订eureka服务
      */
     boolean renew() {
         EurekaHttpResponse<InstanceInfo> httpResponse;
@@ -982,6 +984,8 @@ public class DiscoveryClient implements EurekaClient {
 
     /**
      * Fetches the registry information.
+     *
+     * 拉取注册信息
      *
      * <p>
      * This method tries to get only deltas after the first fetch unless there
@@ -1298,10 +1302,11 @@ public class DiscoveryClient implements EurekaClient {
 
     /**
      * Initializes all scheduled tasks.
+     *
      */
     private void initScheduledTasks() {
         if (clientConfig.shouldFetchRegistry()) {
-            // registry cache refresh timer
+            // registry cache refresh timer  注册缓存刷新计时器
             int registryFetchIntervalSeconds = clientConfig.getRegistryFetchIntervalSeconds();
             int expBackOffBound = clientConfig.getCacheRefreshExecutorExponentialBackOffBound();
             cacheRefreshTask = new TimedSupervisorTask(
@@ -1319,11 +1324,12 @@ public class DiscoveryClient implements EurekaClient {
         }
 
         if (clientConfig.shouldRegisterWithEureka()) {
+            //注册到eureka
             int renewalIntervalInSecs = instanceInfo.getLeaseInfo().getRenewalIntervalInSecs();
             int expBackOffBound = clientConfig.getHeartbeatExecutorExponentialBackOffBound();
             logger.info("Starting heartbeat executor: " + "renew interval is: {}", renewalIntervalInSecs);
 
-            // Heartbeat timer
+            // Heartbeat timer 心跳计时器
             heartbeatTask = new TimedSupervisorTask(
                     "heartbeat",
                     scheduler,
@@ -1494,6 +1500,7 @@ public class DiscoveryClient implements EurekaClient {
 
     /**
      * The task that fetches the registry information at specified intervals.
+     * 以指定的时间间隔获取注册表信息的任务。
      *
      */
     class CacheRefreshThread implements Runnable {
